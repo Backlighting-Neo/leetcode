@@ -11,6 +11,10 @@
 var convert = function(s, numRows) {
   let result = '';
   const sLength = s.length;
+
+  if(numRows === 1) return s;
+  if(sLength <= numRows) return s;
+
   const interval = 2 * numRows - 2;
   for (let i = 0; i < numRows; i++) {
     if(i === 0) {
@@ -25,7 +29,16 @@ var convert = function(s, numRows) {
       }
       continue;
     }
-    gtihub
+    const firstInterval = numRows * 2 - i * 2 - 2;
+    const secondInterval = interval - firstInterval;
+    let flag = false;
+    for(
+      let j = i; 
+      j < sLength; 
+      flag = !flag, j += flag ? firstInterval: secondInterval
+    ) {
+      result += s[j];
+    }
   }
+  return result;
 };
-
