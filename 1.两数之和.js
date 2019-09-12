@@ -13,6 +13,6 @@ var twoSum = function(nums, target) {
   for(let index = 0; index < nums.length; index++) {
     const num = nums[index];
     if(isNaN(temp[num])) temp[target - num] = index;
-    if(!isNaN(temp[num]) && temp[num] !== index) return [temp[num], index];
+    else if(temp[num] !== index) return [temp[num], index];
   }
 };
